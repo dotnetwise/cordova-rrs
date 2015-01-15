@@ -67,7 +67,7 @@ import org.xwalk.core.XWalkView;
 public class CordovaWebView extends XWalkView {
 
     public static final String TAG = "CordovaWebView";
-    public static final String CORDOVA_VERSION = "3.6.3";
+    public static final String CORDOVA_VERSION = "3.6.4";
 
     private HashSet<Integer> boundKeyCodes = new HashSet<Integer>();
 
