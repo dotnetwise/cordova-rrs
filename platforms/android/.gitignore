@@ -5,8 +5,9 @@ local.properties
 /gradlew.bat
 /gradle
 # Ant builds
-ant-built
+ant-build
 ant-gen
+bin
 # Eclipse builds
 gen
 out
