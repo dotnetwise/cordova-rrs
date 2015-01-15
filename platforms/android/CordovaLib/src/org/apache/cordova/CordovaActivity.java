@@ -299,7 +299,7 @@ public class CordovaActivity extends Activity implements CordovaInterface {
      */
     @SuppressLint("NewApi")
     private void toggleFullscreen(Window window) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (false && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//false && applied as a work around because of the bug https://crosswalk-project.org/jira/browse/XWALK-2367?focusedCommentId=24280&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-24280 is still not fixed
             final int uiOptions =
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
