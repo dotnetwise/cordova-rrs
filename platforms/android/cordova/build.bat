@@ -18,7 +18,8 @@
 @ECHO OFF
 SET script_path="%~dp0build"
 IF EXIST %script_path% (
-        node %script_path% %*
+		node %script_path% %*
+        rem node %script_path% %* | "%~dp0\lib\tee.exe" "%~dp0\..\..\..\build.android.log" | "%~dp0\lib\egrep.exe" -i -A 6 "(error|warning|success)"
 ) ELSE (
     ECHO.
     ECHO ERROR: Could not find 'build' script in 'cordova' folder, aborting...>&2
