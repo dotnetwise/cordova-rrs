@@ -179,7 +179,7 @@ function cli(inputArgs) {
 
     if (cmd == 'emulate' || cmd == 'build' || cmd == 'prepare' || cmd == 'compile' || cmd == 'run') {
         // All options without dashes are assumed to be platform names
-    	var tokens = remain.slice(1);
+    	var tokens = args.argv.original.slice(2);
     	tokens.forEach(function (option, index) {
     		console.log("option", option, cordova_lib.cordova_platforms.hasOwnProperty(option));
     		if (cordova_lib.cordova_platforms.hasOwnProperty(option)) {
