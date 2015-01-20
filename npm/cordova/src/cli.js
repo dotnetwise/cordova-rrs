@@ -179,13 +179,15 @@ function cli(inputArgs) {
 
     if (cmd == 'emulate' || cmd == 'build' || cmd == 'prepare' || cmd == 'compile' || cmd == 'run') {
         // All options without dashes are assumed to be platform names
-        opts.platforms = undashed.slice(1);
-        var badPlatforms = _.difference(opts.platforms, known_platforms);
-        if( !_.isEmpty(badPlatforms) ) {
-            msg = 'Unknown platforms: ' + badPlatforms.join(', ');
-            throw new CordovaError(msg);
-        }
-
+    	var tokens = args.argv.original.slice(2);
+    	tokens.forEach(function (option, index) {
+    		console.log("option", option, cordova_lib.cordova_platforms.hasOwnProperty(option));
+    		if (cordova_lib.cordova_platforms.hasOwnProperty(option)) {
+    			opts.platforms.push(option);
+    		} else {
+    			opts.options.push(option);
+    		}
+    	});
         // CB-6976 Windows Universal Apps. Allow mixing windows and windows8 aliases
         opts.platforms = opts.platforms.map(function(platform) {
             // allow using old windows8 alias for new unified windows platform
@@ -218,7 +220,7 @@ function cli(inputArgs) {
         if (args.archs) {
             downstreamArgs.push('--archs=' + args.archs);
         }
-        opts.options = downstreamArgs.concat(unparsedArgs);
+        //opts.options = downstreamArgs.concat(unparsedArgs);
 
         cordova.raw[cmd].call(null, opts).done();
     } else if (cmd == 'serve') {
@@ -290,3 +292,4 @@ function cli(inputArgs) {
         cordova.raw[cmd](subcommand, targets, download_opts).done();
     }
 }
+
